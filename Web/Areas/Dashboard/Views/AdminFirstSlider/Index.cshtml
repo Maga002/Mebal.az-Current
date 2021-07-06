@@ -1,0 +1,38 @@
+﻿@model List<FirstSlider>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-sorter-wrapper col-lg-12 table-responsive">
+    <table id="sortable-table-2" class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="sortStyle">PhotoUrl<i class="mdi mdi-chevron-down"></i></th>
+                <th class="sortStyle">Top-Header<i class="mdi mdi-chevron-down"></i></th>
+                <th class="sortStyle">Middle-Header<i class="mdi mdi-chevron-down"></i></th>
+                <th class="sortStyle">Description<i class="mdi mdi-chevron-down"></i></th>
+                <th class="sortStyle">ButtonText<i class="mdi mdi-chevron-down"></i></th>
+                <th class="sortStyle">SlideAdv<i class="mdi mdi-chevron-down"></i></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.ID</td>
+                <td><img src="~/uploads/@item.PhotoURL" alt="" /></td>
+                <td>@item.TopHeader</td>
+                <td>@item.Header</td>
+                <td>@item.SlideDescription</td>
+                <td>@item.SlideButton</td>
+                <td>@item.SlideAdv</td>
+                <td><a href="/Dashboard/AdminFirstSlider/Edit/@item.ID">Edit</a></td>
+
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

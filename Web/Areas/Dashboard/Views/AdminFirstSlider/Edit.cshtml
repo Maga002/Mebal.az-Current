@@ -1,0 +1,36 @@
+﻿@model FirstSlider
+
+    <h3>@Model.ID <span>Nömrəli Slider</span></h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="Top-Header">Top-Header</label>
+            <input type="text" class="form-control" name="TopHeader" value="@Model.TopHeader" id="Top-Header" placeholder="Top-Header">
+        </div>
+        <div class="form-group">
+            <label for="Middle-Header">Middle-Header</label>
+            <input type="text" class="form-control" name="Header" value="@Model.Header" id="Middle-Header" placeholder="Middle-Header">
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" class="form-control" name="SlideDescription" value="@Model.SlideDescription" id="Description" placeholder="Description">
+        </div>
+        <div class="form-group">
+            <label for="ButtonText">ButtonText</label>
+            <input type="text" class="form-control" name="SlideButton" value="@Model.SlideButton" id="ButtonText" placeholder="ButtonText">
+        </div>
+        <div class="form-group">
+            <label for="SliderAdv">SliderAdv</label>
+            <input type="text" class="form-control" name="SlideAdv" value="@Model.SlideAdv" id="SliderAdv" placeholder="SliderAdv">
+        </div>
+        <div class="form-group">
+            <label> Current Photo</label>
+            <br />
+            <img style="width:300px" src="~/uploads/@Model.PhotoURL" />
+        </div>
+        <div class="form-group">
+            <label for="Photo">Photo</label>
+            <input type="file" class="form-control" name="Photo" id="Photo">
+            <input type="hidden" name="PhotoURL" value="@Model.PhotoURL">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>

@@ -1,5 +1,6 @@
 using DataAccess;
 using Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,21 @@ namespace Web
             services.AddDefaultIdentity<MebelanUser>().AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.User.RequireUniqueEmail = true;
+                option.SignIn.RequireConfirmedPhoneNumber = true;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireDigit = false;
+            });
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/auth/login";
+                options.AccessDeniedPath = "/auth/login";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
